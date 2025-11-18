@@ -1,39 +1,217 @@
-
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DigammaOS — Операционная система на Linux</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      /* For custom scrollbar aesthetics */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #0f172a;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #334155;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #475569;
-      }
-    </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
-  }
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DigammaOS — Операционная система на Linux</title>
+<meta name="description" content="DigammaOS — лёгкая, быстрая и настраиваемая операционная система на базе Linux. Узнайте больше о её возможностях и преимуществах." />
+<style>
+:root{
+--bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#7c5cff; --glass: rgba(255,255,255,0.03);
+--radius:14px; --pad:18px; --max:1100px;
+color-scheme: dark;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#071025 0%, #0b1626 100%);color:#e6eef8;line-height:1.45}
+.wrap{max-width:var(--max);margin:36px auto;padding:0 20px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#3fd1c9);display:flex;align-items:center;justify-content:center;font-weight:700;color:#071025}
+h1{margin:0;font-size:26px}
+.nav{display:flex;gap:14px;align-items:center}
+.btn{background:var(--accent);color:#071025;padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:600}
+.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:var(--muted)}
+code {
+    background: var(--glass);
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #cfe6ff;
+}
+.hero{display:grid;grid-template-columns:1fr 420px;gap:28px;margin-top:28px;align-items:center}
+.card{background:var(--card);padding:var(--pad);border-radius:var(--radius);box-shadow:0 6px 30px rgba(2,6,23,0.6)}
+.lead{color:var(--muted);margin-top:12px}
+
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.feature{padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent)}
+.feature h3{margin:6px 0 4px}
+.feature p{margin:0;color:var(--muted);font-size:14px}
+
+.gallery{display:flex;flex-direction:column;gap:10px}
+.thumbs{display:flex;gap:10px}
+.thumb{flex:1;height:160px;border-radius:10px;background:linear-gradient(90deg,#122633,#0f2b3d);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:600}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+pre{background:var(--glass);padding:14px;border-radius:10px;color:#cfe6ff;overflow:auto}
+
+footer{margin-top:44px;text-align:center;color:var(--muted);font-size:13px;padding-bottom:36px}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .features{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<div class="brand">
+<div class="logo">Dg</div>
+<div>
+<h1>DigammaOS</h1>
+<div class="lead">Лёгкая и настраиваемая Linux-система для рабочих и создателей</div>
+</div>
+</div>
+<nav class="nav">
+<button class="ghost" onclick="scrollToSection('features')">Особенности</button>
+<button class="ghost" onclick="scrollToSection('about')">О DigammaOS</button>
+<button class="ghost" onclick="scrollToSection('getting-started')">Начать</button>
+</nav>
+</header>
+
+<section class="hero">
+  <div>
+    <div class="card">
+      <h2>Стабильность. Скорость. Контроль.</h2>
+      <p class="lead">DigammaOS — это дистрибутив Linux, ориентированный на минимализм, конфиденциальность и производительность. Подходит как для ноутбуков старых моделей, так и для современных рабочих станций. Разработанный с акцентом на чистую и эффективную работу, он предоставляет пользователям полный контроль над своей системой, обеспечивая стабильную и быструю среду для любых задач.</p>
+      
+      <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
+        <div class="card feature" style="padding:12px"> <strong>Ядро</strong><div class="lead" style="margin-top:6px;color:var(--muted)">Оптимизированное ядро для низкой латентности</div></div>
+        <div class="card feature" style="padding:12px"> <strong>Пакеты</strong><div class="lead" style="margin-top:6px;color:var(--muted)">Современные менеджеры пакетов и репозитории</div></div>
+        <div class="card feature" style="padding:12px"> <strong>Конфиденциальность</strong><div class="lead" style="margin-top:6px;color:var(--muted)">Минимальные телеметрия и прозрачная политика</div></div>
+      </div>
+    </div>
+  </div>
+
+  <aside>
+    <div class="card">
+      <h3>Скриншоты</h3>
+      <div class="gallery">
+        <div class="thumbs">
+          <div class="thumb">Рабочий стол</div>
+          <div class="thumb">Меню приложений</div>
+        </div>
+        <div class="thumbs">
+          <div class="thumb">Центр настроек</div>
+          <div class="thumb">Терминал</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+</section>
+
+<section id="features" class="card" style="margin-top:18px">
+  <h2>Что внутри DigammaOS</h2>
+  <div class="features" style="margin-top:12px">
+    <div class="feature">
+      <h3>Лёгкая среда</h3>
+      <p>Небольшое потребление ресурсов, плавная анимация и быстрая загрузка с минимальным набором фоновых сервисов. DigammaOS спроектирована так, чтобы работать эффективно даже на скромном оборудовании, обеспечивая при этом современный пользовательский опыт.</p>
+    </div>
+    <div class="feature">
+      <h3>Современные инструменты</h3>
+      <p>Поддержка Flatpak, Snap (по желанию), а также стандартных менеджеров пакетов для разработчиков. Это позволяет легко устанавливать и обновлять необходимое программное обеспечение, будь то инструменты разработки или повседневные приложения.</p>
+    </div>
+    <div class="feature">
+      <h3>Безопасность</h3>
+      <p>Регулярные обновления безопасности и политика минимальной телеметрии. DigammaOS стремится защитить ваши данные и обеспечить безопасную рабочую среду, не собирая лишней информации о пользователях.</p>
+    </div>
+  </div>
+</section>
+
+<section id="about" style="margin-top:18px" class="card">
+  <h2>О DigammaOS</h2>
+  <p class="lead">DigammaOS — это не просто операционная система, это философия минимализма, производительности и свободы выбора. Мы верим, что ОС должна быть инструментом, который адаптируется к вашим потребностям, а не наоборот. Наша цель — предоставить стабильную, быструю и полностью настраиваемую платформу для всех, кто ценит эффективность и контроль.</p>
+  <p>Основанная на ядре Linux, DigammaOS использует тщательно отобранные компоненты для достижения оптимальной производительности. От лёгкого рабочего стола до оптимизированного ядра — каждый аспект системы разработан с учетом скорости и отзывчивости. Мы поддерживаем открытые стандарты и предоставляем пользователям возможность легко адаптировать систему под свои уникальные рабочие процессы.</p>
+</section>
+
+<section id="getting-started" style="margin-top:18px">
+  <div class="split">
+    <div class="card">
+      <h3>Начать использование DigammaOS</h3>
+      <p class="lead">Хотя прямые ссылки на скачивание были удалены для фокуса на информации, вы можете узнать больше о процессе установки и использования DigammaOS, ознакомившись с нашей документацией и сообществом.</p>
+      <ol style="padding-left:18px">
+        <li>Изучите особенности и преимущества DigammaOS.</li>
+        <li>Посетите наш форум или репозиторий GitHub для получения дополнительной информации.</li>
+        <li>Присоединяйтесь к сообществу для получения поддержки и обмена опытом.</li>
+      </ol>
+      <p style="color:var(--muted)"><strong>Совет:</strong> Ознакомьтесь с подробными руководствами по установке и настройке, доступными через наше сообщество.</p>
+    </div>
+
+    <div class="card">
+      <h3>Примеры использования</h3>
+      <p class="lead">DigammaOS идеально подходит для следующих сценариев:</p>
+      <pre>
+  # Разработка программного обеспечения
+  # Работа с большими данными
+  # Веб-серфинг и мультимедиа
+  # Образовательные цели
+  # Использование на старых компьютерах
+</pre>
+    </div>
+  </div>
+</section>
+
+<section id="install" style="margin-top:18px" class="card">
+  <h2>Концепция установки DigammaOS</h2>
+  <p class="lead">Установка DigammaOS разработана для простоты и гибкости. Пользователи могут выбрать различные варианты установки, адаптированные под их потребности. Основные шаги включают:</p>
+  <ol>
+    <li>Подготовка системы и выбор метода установки.</li>
+    <li>Настройка разделов и пользовательских параметров.</li>
+    <li>Установка базовой системы и необходимых компонентов.</li>
+    <li>Первоначальная настройка и персонализация.</li>
+  </ol>
+  <p style="color:var(--muted)">Подробные инструкции доступны в официальной документации и на форумах сообщества.</p>
+</section>
+
+<section style="margin-top:18px">
+  <div class="card">
+    <h2>Поддерживаемые платформы</h2>
+    <p class="lead">DigammaOS тестируется на широком диапазоне оборудования: ноутбуки Intel/AMD, настольные ПК и многие одноплатные компьютеры. Приведённые ниже — ориентировочные рекомендации.</p>
+    <ul>
+      <li>CPU: x86_64 (Intel/AMD)</li>
+      <li>RAM: 2 ГБ (рекомендуется 4 ГБ для плавной работы)</li>
+      <li>Storage: 20 ГБ свободного места</li>
+    </ul>
+    <p style="color:var(--muted)">Система также активно развивается для поддержки других архитектур, что расширяет её применимость.</p>
+  </div>
+</section>
+
+<section style="margin-top:18px" class="card">
+  <h2>FAQ</h2>
+  <details style="margin-top:8px"><summary><strong>Можно ли установить рядом с Windows?</strong></summary>
+    <div style="margin-top:8px;color:var(--muted)">Да — поддерживается dual-boot. При установке выберите ручную разметку и убедитесь, что у вас есть резервная копия.</div>
+  </details>
+  <details style="margin-top:8px"><summary><strong>Есть ли поддержка драйверов NVIDIA?</strong></summary>
+    <div style="margin-top:8px;color:var(--muted)">Да, проприетарные драйверы доступны в репозитории, но по умолчанию используется открытый драйвер Nouveau.</div>
+  </details>
+  <details style="margin-top:8px"><summary><strong>Насколько DigammaOS настраиваема?</strong></summary>
+    <div style="margin-top:8px;color:var(--muted)">DigammaOS предоставляет широкие возможности для кастомизации. От выбора рабочего стола до тонкой настройки системных параметров — пользователи могут адаптировать систему под свои предпочтения.</div>
+  </details>
+</section>
+
+<section style="margin-top:18px" class="card">
+  <h2>Контакты и обратная связь</h2>
+  <p class="lead">Мы всегда рады обратной связи и вопросам от нашего сообщества. Наши каналы:</p>
+  <ul>
+    <li>Email: <code>hello@digamma.example</code></li>
+    <li>Форум: <em>forum.digamma.example</em></li>
+    <li>GitHub: <em>github.com/digamma-os</em></li>
+  </ul>
+  <p style="color:var(--muted)">Присоединяйтесь к нам, чтобы быть в курсе последних новостей и участвовать в развитии DigammaOS!</p>
+</section>
+
+<footer>
+  © <span id="year"></span> DigammaOS — Сделано с контурной заботой о пользователе.
+</footer>
+
+</div>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+function scrollToSection(id){
+const el = document.getElementById(id);
+if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
 }
 </script>
-</head>
-  <body class="bg-slate-900">
-    <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
-  </body>
+</body>
 </html>
