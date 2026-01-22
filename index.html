@@ -1,14 +1,82 @@
-<doctype html>
-  <html>
-    
-  <head>
-    <title>MasOS</title>
-    <style>
-      <body> {
-      }
-    </style>
-  </head>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MasOS</title>
+  <style>
+    body { 
+      background-image: url("./stripe.png"); background-color: #222; font-family: monospace; 
+    }
+    h1,p { 
+      font-size: 15px; color: white; 
+    }
+    .terminal {
+      width: 500px; height: 250px; border: 2px solid black;
+      padding: 20px; margin: 20px; background-color: rgb(59, 59, 59);
+      box-sizing: border-box; color: white;
+    }
+    input[type="search"] { 
+      background: #000; color: #0f0; border: 1px solid #555; padding: 5px; width: 70%; 
+    }
+    button { 
+      cursor: pointer; padding: 5px 10px; 
+    }
+  </style>
 
-  <body>
-    <center><h1>Welcome!</h1></center>
-  </body>
+
+</head>
+<body>
+  <div>
+    <pre style="color: #ffffff; line-height: 1.2; font-weight: bold;">
+  __  __                  ____   _____ 
+ |  \/  |                / __ \ / ____|
+ | \  / |  __ _   ___   | |  | | (___  
+ | |\/| | / _` | / __|  | |  | | \___ \ 
+ | |  | || (_| | \__ \  | |__| | ____) |
+ |_|  |_| \__,_| |___/   \____/ |_____/ 
+    </pre>
+  </div><br>
+
+  <div class="info">
+    <p>Hello, I am MasKazakh, the creator of this web-site</p>
+  </div>
+
+  <div class="terminal">
+    <h1>All Systems Online</h1>
+    <p>Search or enter URL:</p>
+    <div>
+      <input type="search" id="site-search" placeholder="google.com" />
+      <button type="button" id="go-btn">Go</button>
+    </div>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById('site-search');
+    const searchBtn = document.getElementById('go-btn');
+
+    function performAction() {
+      const query = searchInput.value.trim();
+      if (!query) return;
+
+      // Check if it looks like a URL (contains a dot and no spaces)
+      const isUrl = query.includes('.') && !query.includes(' ');
+
+      if (isUrl) {
+        // Force absolute URL to prevent the browser from looking on your own PC
+        const destination = query.startsWith('http') ? query : 'https://' + query;
+        window.location.href = destination;
+      } else {
+        // Search Google if it's just text
+        window.location.href = "https://www.google.com" + encodeURIComponent(query);
+      }
+    }
+
+    // Click event
+    searchBtn.addEventListener('click', performAction);
+
+    // Enter key event
+    searchInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') performAction();
+    });
+  </script>
+</body>
+</html>
