@@ -1,12 +1,19 @@
 <!DOCTYPE html>
+
+
+
 <html>
+
+
+
 <head>
-  <title>MasOS</title>
+  <title>\homedrive\\homepath\\root\\\main</title>
+
   <style>
     body { 
       background-image: url("./stripe.png"); background-color: #222; font-family: monospace; 
     }
-    h1,p { 
+    h1,h2,p { 
       font-size: 15px; color: white; 
     }
     .terminal {
@@ -15,16 +22,29 @@
       box-sizing: border-box; color: white;
     }
     input[type="search"] { 
-      background: #000; color: #0f0; border: 1px solid #555; padding: 5px; width: 70%; 
+      background: #000; color: rgb(0, 60, 255); border: 1px solid #555; padding: 5px; width: 70%; 
     }
     button { 
       cursor: pointer; padding: 5px 10px; 
     }
+
+    button {
+    color: white;
+    background-color: darkblue;
+    padding: 10px;
+    
+
+    outline: 2px solid blue;
+  }
   </style>
 
 
 </head>
+
+
 <body>
+
+
   <div>
     <pre style="color: #ffffff; line-height: 1.2; font-weight: bold;">
   __  __                  ____   _____ 
@@ -34,11 +54,38 @@
  | |  | || (_| | \__ \  | |__| | ____) |
  |_|  |_| \__,_| |___/   \____/ |_____/ 
     </pre>
-  </div><br>
+  </div>
+
+  <h2>\homedrive\\homepath\\root\\\main</h2><br>
 
   <div class="info">
-    <p>Hello, I am MasKazakh, the creator of this web-site</p>
+    <p>Hello I am MasKazakh, the creator of this web-site. You may find some interesting information about me here</p>
   </div>
+
+   <div class="information">
+    <h1 align="right">I'm 13 year old, I speak English and Russian. I like 1.0 web style, and 
+      my favorite music group is Heaven Pierce Her. I know half of lua and java. My favorite color is green.
+
+    </h1>
+    </div>
+
+
+<a href="./about.html">    <a href=""><a href="">
+    <button>
+        \homedrive\\homepath\\root\\\about
+    </button>
+</a>
+
+                                    <button>
+                                    \homedrive\\homepath\\root\\\experiences
+                                    </button>
+                                  </a>
+
+                                                                    <button>
+                                                                    \homedrive\\homepath\\root\\\
+                                                                    </button>
+                                                                  </a>
+
 
   <div class="terminal">
     <h1>All Systems Online</h1>
@@ -47,7 +94,13 @@
       <input type="search" id="site-search" placeholder="google.com" />
       <button type="button" id="go-btn">Go</button>
     </div>
+
+  </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+  <div>
+    <p>V: 1.1.0</p>
   </div>
+
 
   <script>
     const searchInput = document.getElementById('site-search');
@@ -57,23 +110,18 @@
       const query = searchInput.value.trim();
       if (!query) return;
 
-      // Check if it looks like a URL (contains a dot and no spaces)
       const isUrl = query.includes('.') && !query.includes(' ');
 
       if (isUrl) {
-        // Force absolute URL to prevent the browser from looking on your own PC
         const destination = query.startsWith('http') ? query : 'https://' + query;
         window.location.href = destination;
       } else {
-        // Search Google if it's just text
         window.location.href = "https://www.google.com" + encodeURIComponent(query);
       }
     }
 
-    // Click event
     searchBtn.addEventListener('click', performAction);
 
-    // Enter key event
     searchInput.addEventListener('keypress', function(e) {
       if (e.key === 'Enter') performAction();
     });
